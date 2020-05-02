@@ -1,0 +1,1 @@
+const double phoneBreakPoint = 370;
