@@ -1,0 +1,4 @@
+enum signInButtons {
+  Facebook,
+  Google,
+}
