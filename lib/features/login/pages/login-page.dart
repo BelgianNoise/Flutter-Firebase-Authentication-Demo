@@ -70,26 +70,30 @@ class _RALoginPageState extends State<RALoginPage> {
                               ),
                             ],
                           ),
-                          Divider(
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          SizedBox( height: 5 ),
-                          Text('Of log in via een van deze serivces'),
-                          ButtonBar(
-                            alignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              AJSignInButton(
-                                button: signInButtons.Facebook,
-                                onPressed: () {},
-                              ),
-                              AJSignInButton(
-                                button: signInButtons.Google,
-                                onPressed: () {},
-                              )
-                            ],
-                          ),
                         ],
                       ),
+                    ),
+                    Divider(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    SizedBox( height: 5 ),
+                    Text('Of log in via een van deze serivces'),
+                    ButtonBar(
+                      alignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        AJSignInButton(
+                          button: signInButtons.Facebook,
+                          onPressed: () {},
+                        ),
+                        AJSignInButton(
+                          button: signInButtons.Google,
+                          onPressed: () {},
+                        ),
+                        AJSignInButton(
+                          button: signInButtons.Email,
+                          onPressed: () {},
+                        ),
+                      ],
                     ),
                   ],
                 ),

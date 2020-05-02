@@ -20,9 +20,8 @@ class AJSignInButton extends StatelessWidget {
           backgroundColor: Color(0xff3b5998),
           borderColor: Colors.white,
           iconColor: Colors.white,
-          icon: FontAwesomeIcons.facebook,
+          icon: FontAwesomeIcons.facebookF,
           onPressed: () {},
-          iconSize: 30,
         );
       }
       break;
@@ -33,6 +32,16 @@ class AJSignInButton extends StatelessWidget {
           borderColor: Colors.red,
           iconColor: Colors.red,
           icon: FontAwesomeIcons.google,
+          onPressed: () {},
+        );
+      }
+      break;
+
+      case(signInButtons.Email): {
+        return AJSignInButtonHelper(
+          backgroundColor: Colors.grey[800],
+          iconColor: Colors.white,
+          icon: FontAwesomeIcons.solidEnvelope,
           onPressed: () {},
         );
       }
@@ -56,7 +65,7 @@ class AJSignInButtonHelper extends StatelessWidget {
   const AJSignInButtonHelper({
     this.onPressed,
     this.backgroundColor = Colors.white,
-    this.borderColor = Colors.black,
+    this.borderColor,
     this.iconColor = Colors.black,
     this.icon = FontAwesomeIcons.google,
     this.iconSize = 25
@@ -75,7 +84,7 @@ class AJSignInButtonHelper extends StatelessWidget {
       decoration: BoxDecoration(
         color: this.backgroundColor,
         borderRadius: BorderRadius.all( Radius.circular(50) ),
-        border: Border.all( color: this.borderColor )
+        border: Border.all( color: this.borderColor ?? this.backgroundColor )
       ),
       child: IconButton(
         color: this.iconColor,
