@@ -13,6 +13,8 @@ class AJTextFormField extends StatelessWidget {
     this.paddingRight = 0,
     this.prefixIcon,
     this.textInputType = TextInputType.text,
+    this.controller,
+    this.obscureText = false,
   });
 
   final Function validator;
@@ -24,6 +26,8 @@ class AJTextFormField extends StatelessWidget {
   final double paddingRight;
   final IconData prefixIcon;
   final TextInputType textInputType;
+  final controller;
+  final obscureText;
 
   final OutlineInputBorder errorOutlineBorder = const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.redAccent)
@@ -36,6 +40,8 @@ class AJTextFormField extends StatelessWidget {
         paddingLeft, paddingTop, paddingRight, paddingBotttom
       ),
       child: TextFormField(
+        obscureText: this.obscureText,
+        controller: this.controller,
         maxLines: this.maxLines,
         validator: (val) => this.validator(val),
         cursorColor: Theme.of(context).primaryColorDark,
