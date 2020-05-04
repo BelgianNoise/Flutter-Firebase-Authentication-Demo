@@ -21,6 +21,7 @@ class _RAHomePageState extends State<RAHomePage> {
   final List<AJTab> tabs = [
     AJTab( child: Text('Activiteit'), page: ARActivityPage() ),
     AJTab( child: Text('Recepten'), page: RARecipesPage() ),
+    AJTab( child: Text('Profiel'), page: RARecipesPage() ),
   ];
 
   @override
