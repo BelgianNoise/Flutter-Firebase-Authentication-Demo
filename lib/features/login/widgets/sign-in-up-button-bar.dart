@@ -47,8 +47,8 @@ class AJSignInAndUpButtonBar extends StatelessWidget {
       );
     }
   }
-  signUp() {
-
+  signUp(context) {
+    Navigator.pushNamed(context, '/register');
   }
 
   @override
@@ -59,7 +59,7 @@ class AJSignInAndUpButtonBar extends StatelessWidget {
         children: <Widget>[
           AJSecondaryButton(
             text: 'Registreren',
-            onPressed: signUp,
+            onPressed: () => signUp(context),
           ),
           AJPrimaryButton(
             text: 'Aanmelden',
@@ -81,7 +81,7 @@ class AJSignInAndUpButtonBar extends StatelessWidget {
             padding: const EdgeInsets.all(gutterNormal),
             child: AJSecondaryButton(
               text: 'Registreren',
-              onPressed: signUp,
+              onPressed: () => signUp(context),
             ),
           ),
         ],
