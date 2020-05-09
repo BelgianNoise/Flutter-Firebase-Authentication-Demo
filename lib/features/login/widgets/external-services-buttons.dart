@@ -13,6 +13,7 @@ class RAExternalServicesButtons extends StatelessWidget {
         ),
         SizedBox( height: 5 ),
         Text('Of log in via een van deze serivces'),
+        Text('(nog niet ondersteund)'),
         ButtonBar(
           alignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -22,10 +23,6 @@ class RAExternalServicesButtons extends StatelessWidget {
             ),
             AJExternalServiceSignInButton(
               button: signInButtons.Google,
-              onPressed: () {},
-            ),
-            AJExternalServiceSignInButton(
-              button: signInButtons.Email,
               onPressed: () {},
             ),
           ],
