@@ -4,7 +4,9 @@ import 'package:no/common/validators/register-confirm-password.dart';
 import 'package:no/common/validators/register-password.dart';
 import 'package:no/common/validators/register-username.dart';
 import 'package:no/common/widgets/text-form-field.dart';
+import 'package:no/features/login/widgets/external-services-buttons.dart';
 import 'package:no/features/login/widgets/login-page-template.dart';
+import 'package:no/features/login/widgets/register-sign-in-up-button-bar.dart';
 
 class RARegisterPage extends StatelessWidget {
 
@@ -59,9 +61,20 @@ class RARegisterPage extends StatelessWidget {
                     'in je wachtwoord zijn niet verplicht maar wel sterk aangeraden.',
                     style: TextStyle( color: Colors.grey[600], fontSize: 11, ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                  child: RARegisterPageSignInAndUpButtonBar(
+                    formKey: this._formKey,
+                    scaffoldKey: this._scaffoldKey,
+                    emailController: this.emailController,
+                    usernameController: this.usernameController,
+                    passwordController: this.passwordController,
+                  ),
+                ),
               ],
             ),
           ),
+          RAExternalServicesButtons(),
         ],
       )
     );

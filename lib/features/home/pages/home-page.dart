@@ -19,7 +19,7 @@ class RAHomePage extends StatefulWidget {
 
 class _RAHomePageState extends State<RAHomePage> {
   final List<AJTab> tabs = [
-    AJTab( child: Text('Activiteit'), page: ARActivityPage() ),
+    AJTab( child: Text('Activiteit'), page: RAActivityPage() ),
     AJTab( child: Text('Recepten'), page: RARecipesPage() ),
     AJTab( child: Text('Profiel'), page: RARecipesPage() ),
   ];
@@ -30,7 +30,7 @@ class _RAHomePageState extends State<RAHomePage> {
       length: this.tabs.length,
       child: Scaffold(
         appBar: AppBar(
-          title: Text( 'Welkom ' + Provider.of<FirebaseUser>(context).displayName ) ,
+          title: Text( 'Welkom ' + Provider.of<FirebaseUser>(context).displayName.toString() ) ,
           actions: <Widget>[
             IconButton(
               icon: Icon( Icons.settings ),

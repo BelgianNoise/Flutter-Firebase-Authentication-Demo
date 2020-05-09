@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:no/features/login/enums/sign-in-buttons.dart';
 import 'package:no/common/validators/login-password.dart';
 import 'package:no/common/validators/login-email.dart';
+import 'package:no/features/login/widgets/external-services-buttons.dart';
 import 'package:no/features/login/widgets/login-page-template.dart';
-import 'package:no/features/login/widgets/sign-in-button.dart';
 import 'package:no/common/widgets/text-form-field.dart';
-import 'package:no/features/login/widgets/sign-in-up-button-bar.dart';
+import 'package:no/features/login/widgets/login-sign-in-up-button-bar.dart';
 
 class RALoginPage extends StatefulWidget {
   @override
@@ -49,37 +48,19 @@ class _RALoginPageState extends State<RALoginPage> {
                   textInputType: TextInputType.visiblePassword,
                   obscureText: true,
                 ),
-                AJSignInAndUpButtonBar(
-                  formKey: this._formKey,
-                  scaffoldKey: this._scaffoldKey,
-                  emailController: this.emailController,
-                  passwordController: this.passwordController,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                  child: RALoginPageSignInAndUpButtonBar(
+                    formKey: this._formKey,
+                    scaffoldKey: this._scaffoldKey,
+                    emailController: this.emailController,
+                    passwordController: this.passwordController,
+                  ),
                 ),
               ],
             ),
           ),
-          Divider(
-            color: Theme.of(context).primaryColor,
-          ),
-          SizedBox( height: 5 ),
-          Text('Of log in via een van deze serivces'),
-          ButtonBar(
-            alignment: MainAxisAlignment.center,
-            children: <Widget>[
-              AJSignInButton(
-                button: signInButtons.Facebook,
-                onPressed: () {},
-              ),
-              AJSignInButton(
-                button: signInButtons.Google,
-                onPressed: () {},
-              ),
-              AJSignInButton(
-                button: signInButtons.Email,
-                onPressed: () {},
-              ),
-            ],
-          ),
+          RAExternalServicesButtons(),
         ],
       ),
     );

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:no/common/services/auth-service.dart';
 import 'package:no/common/services/snackbar-service.dart';
-import 'package:no/common/theme/breakpoints.dart';
-import 'package:no/common/theme/measures.dart';
 import 'package:no/common/widgets/primary-button.dart';
 import 'package:no/common/widgets/secondary-button.dart';
 
-class AJSignInAndUpButtonBar extends StatelessWidget {
+class RALoginPageSignInAndUpButtonBar extends StatelessWidget {
 
-  AJSignInAndUpButtonBar({
+  RALoginPageSignInAndUpButtonBar({
     this.formKey,
     this.emailController,
     this.passwordController,
@@ -53,32 +51,40 @@ class AJSignInAndUpButtonBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.of(context).size.width > phoneBreakPoint) {
-      return ButtonBar(
-        alignment: MainAxisAlignment.spaceAround,
+    if (MediaQuery.of(context).size.width > 400) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          AJSecondaryButton(
-            text: 'Registreren',
-            onPressed: () => signUp(context),
+          Expanded(
+            flex: 47,
+            child: AJSecondaryButton(
+              text: 'Registreren',
+              onPressed: () => signUp(context),
+            ),
           ),
-          AJPrimaryButton(
-            text: 'Aanmelden',
-            onPressed: signIn,
+          Expanded( flex: 6, child: SizedBox()),
+          Expanded(
+            flex: 47,
+            child: AJPrimaryButton(
+              text: 'Aanmelden',
+              onPressed: signIn,
+            ),
           ),
         ],
       );
     } else {
       return Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(gutterNormal),
+          SizedBox(
+            width: double.infinity,
             child: AJPrimaryButton(
               text: 'Aanmelden',
               onPressed: signIn,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(gutterNormal),
+          SizedBox( height: 5, ),
+          SizedBox(
+            width: double.infinity,
             child: AJSecondaryButton(
               text: 'Registreren',
               onPressed: () => signUp(context),
@@ -87,6 +93,5 @@ class AJSignInAndUpButtonBar extends StatelessWidget {
         ],
       );
     }
-    
   }
 }

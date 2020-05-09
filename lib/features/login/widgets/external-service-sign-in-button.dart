@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:no/features/login/enums/sign-in-buttons.dart';
 
-class AJSignInButton extends StatelessWidget {
+class AJExternalServiceSignInButton extends StatelessWidget {
 
-  const AJSignInButton({
+  const AJExternalServiceSignInButton({
     this.onPressed,
     this.button
   });
@@ -16,7 +16,7 @@ class AJSignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     switch(button){
       case signInButtons.Facebook: {
-        return AJSignInButtonHelper(
+        return AJExternalServiceSignInButtonHelper(
           backgroundColor: Color(0xff3b5998),
           borderColor: Colors.white,
           iconColor: Colors.white,
@@ -27,7 +27,7 @@ class AJSignInButton extends StatelessWidget {
       break;
 
       case signInButtons.Google: {
-        return AJSignInButtonHelper(
+        return AJExternalServiceSignInButtonHelper(
           backgroundColor: Colors.white,
           borderColor: Colors.red,
           iconColor: Colors.red,
@@ -38,7 +38,7 @@ class AJSignInButton extends StatelessWidget {
       break;
 
       case(signInButtons.Email): {
-        return AJSignInButtonHelper(
+        return AJExternalServiceSignInButtonHelper(
           backgroundColor: Colors.grey[800],
           iconColor: Colors.white,
           icon: FontAwesomeIcons.solidEnvelope,
@@ -48,7 +48,7 @@ class AJSignInButton extends StatelessWidget {
       break;
 
       default: {
-        return AJSignInButtonHelper(
+        return AJExternalServiceSignInButtonHelper(
           backgroundColor: Colors.white,
           borderColor: Colors.red,
           iconColor: Colors.red,
@@ -60,9 +60,9 @@ class AJSignInButton extends StatelessWidget {
   }
 }
 
-class AJSignInButtonHelper extends StatelessWidget {
+class AJExternalServiceSignInButtonHelper extends StatelessWidget {
 
-  const AJSignInButtonHelper({
+  const AJExternalServiceSignInButtonHelper({
     this.onPressed,
     this.backgroundColor = Colors.white,
     this.borderColor,
