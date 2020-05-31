@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:no/common/theme/measures.dart';
 import 'package:no/common/validators/login-password.dart';
-import 'package:no/common/validators/login-email.dart';
+import 'package:no/common/widgets/text-form-field-email.dart';
 import 'package:no/features/login/widgets/external-services-buttons.dart';
 import 'package:no/features/login/widgets/login-page-template.dart';
 import 'package:no/common/widgets/text-form-field.dart';
@@ -31,14 +32,10 @@ class _RALoginPageState extends State<RALoginPage> {
             key: _formKey,
             autovalidate: true,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                AJTextFormField(
-                  labelText: 'Email: ',
-                  validator: loginEmail,
-                  prefixIcon: Icons.person_outline,
-                  controller: this.emailController,
-                  textInputType: TextInputType.emailAddress,
+                AJTextFormFieldEmail(
+                  emailController: this.emailController
                 ),
                 AJTextFormField(
                   labelText: 'Wachtwoord: ',
@@ -47,6 +44,20 @@ class _RALoginPageState extends State<RALoginPage> {
                   controller: this.passwordController,
                   textInputType: TextInputType.visiblePassword,
                   obscureText: true,
+                ),
+                GestureDetector(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: gutterNormal),
+                    child: Text("Wachtwoord vergeten?",
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/passwordreset');
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),

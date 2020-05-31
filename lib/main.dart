@@ -8,6 +8,8 @@ import 'package:no/features/login/pages/register-page.dart';
 import 'package:no/features/settings/pages/settings-page.dart';
 import 'package:provider/provider.dart';
 
+import 'features/login/pages/password-reset.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(StreamProvider<FirebaseUser>.value(
@@ -19,6 +21,7 @@ void main() {
         '/': (context) => Provider.of<FirebaseUser>(context) == null ? RALoginPage() : RAHomePage(),
         '/settings': (context) => RASettingsPage(),
         '/register': (context) => RARegisterPage(),
+        '/passwordreset': (context) => RAPasswordResetPage(),
       },
       theme: appTheme,
     ),

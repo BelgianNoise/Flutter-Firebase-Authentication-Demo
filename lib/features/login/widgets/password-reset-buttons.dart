@@ -1,83 +1,72 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:no/common/services/auth-service.dart';
 import 'package:no/common/services/snackbar-service.dart';
 import 'package:no/common/widgets/primary-button.dart';
 import 'package:no/common/widgets/secondary-button.dart';
 
-class RARegisterPageSignInAndUpButtonBar extends StatelessWidget {
+class RAPasswordResetButtons extends StatelessWidget {
 
-  RARegisterPageSignInAndUpButtonBar({
+  RAPasswordResetButtons({
     this.formKey,
-    this.scaffoldKey,
     this.emailController,
-    this.passwordController,
-    this.usernameController,
+    this.scaffoldKey
   });
-
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final TextEditingController usernameController;
 
   final GlobalKey<FormState> formKey;
   final GlobalKey<ScaffoldState> scaffoldKey;
+  final TextEditingController emailController;
 
   final AuthService _authService = AuthService();
   final SnackBarService _snackbarService = SnackBarService();
 
-  signUp(context) async {
-    if ( this.formKey.currentState.validate() ) {
+  resetPassword(context) async {
+    if (this.formKey.currentState.validate()) {
       this.formKey.currentState.save();
       String email = this.emailController.text.trim();
-      String username = this.usernameController.text.trim();
-      String password = this.passwordController.text.trim();
-      bool res = await _authService.registerWithEmailAndPassword(email, username, password);
-      if ( res == true ) {
-        String message = 'Je account werd succesvol aangemaakt!';
+      bool res = await this._authService.passwordReset(email);
+      if (res == null) {
+        String message = 'Er is geen account met dit email addres!';
         _snackbarService.displaySnackBar(
           scaffoldKey: scaffoldKey, text: message,
         );
-        Navigator.pop(context);
-      } else if ( res == false ) {
-        String message = 'Het email addres is niet geldig of is reeds in gebruik!';
+      } else { 
+        String message = 'Check je inbox! Er werd een email verzonden met een link om je wachtwoord opnieuw in te stellen.';
         _snackbarService.displaySnackBar(
           scaffoldKey: scaffoldKey, text: message,
         );
-      } else { // res == null
-        String message = 'Er ging iets mis bij het aanmaken van je account, probeer het later nog eens of contacteer een administrator!';
-        _snackbarService.displaySnackBar(
-          scaffoldKey: scaffoldKey, text: message,
-        );
+        new Timer(const Duration(seconds: 5), () => Navigator.pop(context) );
       }
-    } else {
-      String message = 'Gelieve alle velden in te vullen';
+    } else { // should be redundant
+      String message = 'Gelieve een email addres in te vullen';
       _snackbarService.displaySnackBar(
         scaffoldKey: scaffoldKey, text: message,
       );
     }
   }
-
-  signIn(context) {
+  back(context) {
     Navigator.pop(context);
   }
-  
+
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.of(context).size.width > 450) {
+    if (MediaQuery.of(context).size.width > 400) {
       return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Expanded(
             flex: 47,
             child: AJSecondaryButton(
-              text: 'Al een account ?',
-              onPressed: () => signIn(context),
+              text: 'Ga terug',
+              onPressed: () => back(context),
             ),
           ),
           Expanded( flex: 6, child: SizedBox()),
           Expanded(
             flex: 47,
             child: AJPrimaryButton(
-              text: 'Account maken',
-              onPressed: () => signUp(context),
+              text: 'Wachtwoord resetten',
+              onPressed: () => resetPassword(context),
             ),
           ),
         ],
@@ -88,16 +77,16 @@ class RARegisterPageSignInAndUpButtonBar extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: AJPrimaryButton(
-              text: 'Account maken',
-              onPressed: () => signUp(context),
+              text: 'Wachtwoord resetten',
+              onPressed: () => resetPassword(context),
             ),
           ),
           SizedBox( height: 5, ),
           SizedBox(
             width: double.infinity,
             child: AJSecondaryButton(
-              text: 'Al een account ?',
-              onPressed: () => signIn(context),
+              text: 'Ga terug',
+              onPressed: () => back(context),
             ),
           ),
         ],

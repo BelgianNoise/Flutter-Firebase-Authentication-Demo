@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:no/common/validators/login-email.dart';
 import 'package:no/common/validators/register-confirm-password.dart';
 import 'package:no/common/validators/register-password.dart';
 import 'package:no/common/validators/register-username.dart';
+import 'package:no/common/widgets/text-form-field-email.dart';
 import 'package:no/common/widgets/text-form-field.dart';
 import 'package:no/features/login/widgets/external-services-buttons.dart';
 import 'package:no/features/login/widgets/login-page-template.dart';
@@ -32,11 +32,9 @@ class RARegisterPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                AJTextFormField(
-                  labelText: 'Email: ',
-                  validator: loginEmail,
-                  controller: this.emailController,
-                  textInputType: TextInputType.emailAddress,
+                AJTextFormFieldEmail(
+                  emailController: this.emailController,
+                  showIcon: false,
                 ),
                 AJTextFormField(
                   labelText: 'Gebruikersnaam: ',

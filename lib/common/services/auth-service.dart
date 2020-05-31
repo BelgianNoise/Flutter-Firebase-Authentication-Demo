@@ -66,4 +66,16 @@ class AuthService {
       return null;
     }
   }
+
+  Future<bool> passwordReset(String email) async {
+    try {
+      print('Requesting password reset...');
+      await _auth.sendPasswordResetEmail(email: email);
+      print('Password reset email has been requested / sent!');
+      return true;
+    } catch (error) {
+      print('An error occured while requesting password reset: ' + error.toString() );
+      return null;
+    }
+  }
 }
