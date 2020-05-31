@@ -1,1 +1,1 @@
-A demo app using to test Firebase Authentication and Flutter.
+A demo app to test Firebase Authentication and Flutter.
